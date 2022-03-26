@@ -8,7 +8,7 @@ export default function Logo({ className, children, ...props }) {
       {...props}
       className={classNames(
         className || "",
-        "text-orange-600 font-black text-2xl"
+        "text-orange-600 font-black text-2xl rounded focus:ring-2 ring-offset-2 ring-orange-200 transition"
       )}
     >
       {children}
