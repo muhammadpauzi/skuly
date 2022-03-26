@@ -6,7 +6,7 @@ import Input from "../components/Input";
 import Label from "../components/Label";
 import Spinner from "../components/Spinner";
 import SuccessMessage from "../components/SuccessMessage";
-import PAGES_TITLE from "../constants/pagesTitle";
+import PAGE_TITLES from "../constants/pageTitles";
 
 export default function Register() {
   const [errors, setErrors] = useState([]);
@@ -15,7 +15,7 @@ export default function Register() {
   const [registerMessage, setRegisterMessage] = useState("");
 
   useEffect(() => {
-    document.title = PAGES_TITLE.REGISTER;
+    document.title = PAGE_TITLES.REGISTER;
   });
 
   const handleSubmit = async (e) => {
@@ -24,10 +24,10 @@ export default function Register() {
 
   return (
     <>
-      <div className="min-h-full flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+            <h2 className="mt-6 text-center text-3xl font-black text-gray-900">
               Register your account
             </h2>
           </div>

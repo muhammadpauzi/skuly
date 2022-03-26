@@ -15,12 +15,12 @@ import { Link } from "react-router-dom";
 const links = [
   {
     name: "My Classes",
-    href: "/",
+    href: "/my-classes",
     icon: PencilIcon,
   },
   {
     name: "Classes",
-    href: "/",
+    href: "/classes",
     icon: PencilAltIcon,
   },
 ];
