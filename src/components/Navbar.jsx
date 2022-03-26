@@ -8,8 +8,9 @@ import {
 } from "@heroicons/react/outline";
 import Logo from "./Logo";
 import Button from "./Button";
-import { Link } from "react-router-dom";
+import AppLink from "./AppLink";
 import Container from "./Container";
+import { Link } from "react-router-dom";
 
 const links = [
   {
@@ -29,20 +30,14 @@ export default function Navbar() {
     <Popover className="relative bg-white z-50 border-b-2 border-gray-100">
       <Container>
         <div className="flex justify-between items-center py-6 md:py-4">
-          <div className="flex justify-between items-center md:space-x-10">
-            <div className="flex justify-start lg:w-0 lg:flex-1 md:mr-16">
-              <Logo className="flex items-center">Skuly.</Logo>
-            </div>
-            <div className="hidden md:flex space-x-6 justify-center">
+          <div className="flex items-center md:space-x-10">
+            <Logo className="flex items-center">Skuly.</Logo>
+            <div className="hidden md:flex space-x-6 justify-start">
               {links.map((link, i) => {
                 return (
-                  <a
-                    key={i}
-                    href={link.href}
-                    className="text-base rounded p-2 transition focus:ring-2 ring-offset-2 focus:ring-orange-200 font-medium text-gray-500 hover:text-gray-900 "
-                  >
+                  <AppLink key={i} to={link.href}>
                     {link.name}
-                  </a>
+                  </AppLink>
                 );
               })}
             </div>
@@ -94,16 +89,12 @@ export default function Navbar() {
                   </Popover.Button>
                 </div>
               </div>
-              <div className="block md:hidden space-y-2">
+              <div className="block md:hidden space-y-4">
                 {links.map((link, i) => {
                   return (
-                    <a
-                      key={i}
-                      href={link.href}
-                      className="block w-full rounded p-2 transition focus:ring-2 ring-offset-2 focus:ring-orange-200 text-base font-medium text-gray-500 hover:text-gray-900"
-                    >
+                    <AppLink key={i} to={link.href} className="block w-full">
                       {link.name}
-                    </a>
+                    </AppLink>
                   );
                 })}
               </div>
