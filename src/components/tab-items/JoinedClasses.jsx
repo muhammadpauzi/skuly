@@ -44,7 +44,7 @@ export default function MyJoinedClasses() {
                     paddingClassName="px-3 py-2"
                     textSizeClassName="text-sm"
                 >
-                    Join Class
+                    Join class
                 </Button>
             </HeaderTabItem>
             <div className="space-y-2">

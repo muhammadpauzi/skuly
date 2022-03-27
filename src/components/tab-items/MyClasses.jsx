@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import useSWR from 'swr';
 import PAGE_TITLES from '../../constants/pageTitles';
@@ -5,6 +6,7 @@ import { fetcher } from '../../utils/fetcher';
 import ClassCard from '../cards/ClassCard';
 import HeaderTabItem from '../HeaderTabItem';
 import Spinner from '../Spinner';
+import Button from '../forms/Button';
 
 export default function MyClasses() {
     useEffect(() => {
@@ -31,7 +33,16 @@ export default function MyClasses() {
 
     return (
         <>
-            <HeaderTabItem title="My Classes" />
+            <HeaderTabItem title="My Classes">
+                <Button
+                    as={Link}
+                    to="/classes/create"
+                    paddingClassName="px-3 py-2.5"
+                    textSizeClassName="text-sm"
+                >
+                    Create new class
+                </Button>
+            </HeaderTabItem>
             <div className="space-y-2">
                 {classes && classes.length > 0 ? (
                     classes.map((_class) => (
