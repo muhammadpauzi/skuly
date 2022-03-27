@@ -1,6 +1,7 @@
 import axios from "../utils/axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import LoadingScreen from "../components/LoadingScreen";
 
 const AuthContext = createContext({
   user: null,
@@ -91,7 +92,7 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider value={memeoedValue}>
-      {!isLoadingInitial && children}
+      {isLoadingInitial ? <LoadingScreen /> : children}
     </AuthContext.Provider>
   );
 }
