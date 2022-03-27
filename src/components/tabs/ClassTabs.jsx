@@ -1,7 +1,7 @@
 import { Tab } from '@headlessui/react';
 import AppTab from '../app/AppTab';
 import MyClasses from '../tab-items/MyClasses';
-import MyJoinedClasses from '../tab-items/MyJoinedClasses';
+import MyJoinedClasses from '../tab-items/JoinedClasses';
 import Presences from '../tab-items/Presences';
 
 export default function ClassTabs() {

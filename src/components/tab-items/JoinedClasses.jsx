@@ -1,12 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 import PAGE_TITLES from '../../constants/pageTitles';
 import { fetcher } from '../../utils/fetcher';
 import ClassCard from '../cards/ClassCard';
 import HeaderTabItem from '../HeaderTabItem';
+import Button from '../forms/Button';
 import Spinner from '../Spinner';
+import JoinModal from '../JoinModal';
 
 export default function MyJoinedClasses() {
+    const [isOpenJoinModal, setIsOpenJoinModal] = useState(false);
+
     useEffect(() => {
         document.title = PAGE_TITLES.MY_JOINED_CLASSES;
     }, []);
@@ -34,7 +38,15 @@ export default function MyJoinedClasses() {
 
     return (
         <>
-            <HeaderTabItem title="Joined Classes" />
+            <HeaderTabItem title="Joined Classes">
+                <Button
+                    onClick={() => setIsOpenJoinModal(true)}
+                    paddingClassName="px-3 py-2"
+                    textSizeClassName="text-sm"
+                >
+                    Join Class
+                </Button>
+            </HeaderTabItem>
             <div className="space-y-2">
                 {classes && classes.length > 0 ? (
                     classes.map((_class) => (
@@ -46,6 +58,10 @@ export default function MyJoinedClasses() {
                     </h3>
                 )}
             </div>
+            <JoinModal
+                isOpen={isOpenJoinModal}
+                setIsOpen={setIsOpenJoinModal}
+            />
         </>
     );
 }

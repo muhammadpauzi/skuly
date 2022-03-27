@@ -1,12 +1,22 @@
 import Input from './forms/Input';
 
-export default function HeaderTabItem({ title, withInputSearch = true }) {
+export default function HeaderTabItem({
+    children,
+    title,
+    withInputSearch = true,
+}) {
     return (
         <>
-            <div>
-                <h2 className="text-lg md:text-3xl font-black text-gray-900 mb-6">
+            <div
+                className={
+                    children ? 'flex items-center justify-between mb-6' : 'mb-6'
+                }
+            >
+                <h2 className="text-lg md:text-3xl font-black text-gray-900">
                     {title}
                 </h2>
+
+                {children && <div>{children}</div>}
             </div>
 
             <div className="mb-4">
