@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import Container from '../components/Container';
-import FormCreateClass from '../components/FormCreateClass';
+import FormCreateClass from '../components/forms/FormCreateClass';
 import PAGE_TITLES from '../constants/pageTitles';
 
 export default function CreateClass() {

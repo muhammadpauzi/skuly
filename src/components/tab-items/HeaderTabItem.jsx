@@ -1,4 +1,4 @@
-import Input from './forms/Input';
+import Input from '../forms/Input';
 
 export default function HeaderTabItem({
     children,

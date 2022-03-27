@@ -7,7 +7,7 @@ export default function Input({ styleClassName, className, ...props }) {
     );
     styleClassName =
         styleClassName ||
-        'border-2 border-gray-200 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500';
+        'border-2 border-gray-200 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500';
 
     return (
         <input

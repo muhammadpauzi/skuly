@@ -1,6 +1,6 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useRef } from 'react';
-import Button from './forms/Button';
+import Button from '../forms/Button';
 
 export default function Modal({ children, isOpen, setIsOpen }) {
     const cancelButtonRef = useRef(null);
@@ -47,7 +47,7 @@ export default function Modal({ children, isOpen, setIsOpen }) {
                                 {children}
                                 <Button
                                     type="button"
-                                    styleClassName="bg-orange-50 hover:bg-orange-100 text-orange-500 focus:ring-orange-100 w-full md:w-auto"
+                                    styleClassName="bg-indigo-50 hover:bg-indigo-100 text-indigo-500 focus:ring-indigo-100 w-full md:w-auto"
                                     onClick={() => setIsOpen(false)}
                                     ref={cancelButtonRef}
                                 >

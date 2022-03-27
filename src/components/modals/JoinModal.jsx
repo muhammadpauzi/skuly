@@ -1,10 +1,10 @@
 import { Dialog } from '@headlessui/react';
 import { UserAddIcon } from '@heroicons/react/solid';
 import { useState } from 'react';
-import { useClasses } from '../hooks/useClasses';
-import Button from './forms/Button';
-import Input from './forms/Input';
-import Label from './forms/Label';
+import { useClasses } from '../../hooks/useClasses';
+import Button from '../forms/Button';
+import Input from '../forms/Input';
+import Label from '../forms/Label';
 import Modal from './Modal';
 
 export default function JoinModal({ isOpen, setIsOpen }) {
@@ -18,9 +18,9 @@ export default function JoinModal({ isOpen, setIsOpen }) {
 
     return (
         <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-            <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-orange-100">
+            <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-indigo-100">
                 <UserAddIcon
-                    className="h-6 w-6 text-orange-500"
+                    className="h-6 w-6 text-indigo-500"
                     aria-hidden="true"
                 />
             </div>

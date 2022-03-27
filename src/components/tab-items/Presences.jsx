@@ -1,10 +1,6 @@
 import { useEffect } from 'react';
-import useSWR from 'swr';
 import PAGE_TITLES from '../../constants/pageTitles';
-import { fetcher } from '../../utils/fetcher';
-import ClassCard from '../cards/ClassCard';
-import HeaderTabItem from '../HeaderTabItem';
-import Spinner from '../Spinner';
+import HeaderTabItem from './HeaderTabItem';
 
 export default function Presences() {
     useEffect(() => {

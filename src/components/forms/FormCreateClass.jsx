@@ -1,10 +1,10 @@
-import Spinner from './Spinner';
-import Button from './forms/Button';
+import Spinner from '../Spinner';
+import Button from './Button';
 import { useState } from 'react';
-import ErrorMessage from './ErrorMessage';
-import Input from './forms/Input';
-import Label from './forms/Label';
-import { useClasses } from '../hooks/useClasses';
+import ErrorMessage from '../ErrorMessage';
+import Input from './Input';
+import Label from './Label';
+import { useClasses } from '../../hooks/useClasses';
 
 export default function FormCreateClass() {
     const { createClass, isLoading } = useClasses();
@@ -87,7 +87,7 @@ export default function FormCreateClass() {
                             type="submit"
                             className="w-full"
                             styleClassName={
-                                isLoading ? 'text-white bg-orange-400' : ''
+                                isLoading ? 'text-white bg-indigo-400' : ''
                             }
                             disabled={isLoading}
                         >

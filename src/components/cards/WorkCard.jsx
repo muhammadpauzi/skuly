@@ -4,7 +4,7 @@ export default function WorkCard() {
     return (
         <AppLink
             to="classes/1"
-            className="block w-full py-4 px-5 rounded-md bg-white border-l-4 border-t-2 border-r-2 border-b-2 border-gray-100 border-l-orange-500"
+            className="block w-full py-4 px-5 rounded-md bg-white border-l-4 border-t-2 border-r-2 border-b-2 border-gray-100 border-l-indigo-500"
         >
             <h3 className="text-lg mb-3 font-bold text-gray-800">
                 My First Class Work

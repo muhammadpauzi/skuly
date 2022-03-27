@@ -3,10 +3,10 @@ import useSWR from 'swr';
 import PAGE_TITLES from '../../constants/pageTitles';
 import { fetcher } from '../../utils/fetcher';
 import ClassCard from '../cards/ClassCard';
-import HeaderTabItem from '../HeaderTabItem';
+import HeaderTabItem from './HeaderTabItem';
 import Button from '../forms/Button';
 import Spinner from '../Spinner';
-import JoinModal from '../JoinModal';
+import JoinModal from '../modals/JoinModal';
 
 export default function MyJoinedClasses() {
     const [isOpenJoinModal, setIsOpenJoinModal] = useState(false);
@@ -27,7 +27,7 @@ export default function MyJoinedClasses() {
                 <HeaderTabItem title="Joined Classes" />
                 <div className="py-10 flex items-center justify-center">
                     <Spinner
-                        styleClassName="text-orange-500"
+                        styleClassName="text-indigo-500"
                         dimensionClassName="w-6 h-6"
                     />
                 </div>
