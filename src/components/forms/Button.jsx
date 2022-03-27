@@ -12,7 +12,7 @@ export default function Button({
 }) {
     const ElementAsButton = as === Link ? Link : `${as}`;
     paddingClassName = paddingClassName || 'px-5 py-2.5';
-    textSizeClassName = textSizeClassName || 'text-base';
+    textSizeClassName = textSizeClassName || 'text-sm md:text-base';
     const baseStyleClassName = classNames(
         className ? className : '',
         paddingClassName,

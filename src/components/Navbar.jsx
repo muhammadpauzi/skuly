@@ -27,11 +27,11 @@ const links = [
 ];
 
 export default function Navbar() {
-    const { user, signOut } = useAuth();
+    const { user, signOut, isLoading } = useAuth();
     return (
         <Popover className="relative bg-white z-50 border-b-2 border-gray-100">
             <Container>
-                <div className="flex justify-between items-center py-6 md:py-4">
+                <div className="flex justify-between items-center px-4 py-6 md:py-4">
                     <div className="flex items-center md:space-x-10">
                         <Logo className="flex items-center">Skuly.</Logo>
                         <div className="hidden md:flex space-x-6 justify-start">

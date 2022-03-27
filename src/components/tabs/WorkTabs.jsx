@@ -1,5 +1,6 @@
 import { Tab } from '@headlessui/react';
 import AppTab from '../app/AppTab';
+import Settings from '../tab-items/Settings';
 import Students from '../tab-items/Students';
 import Works from '../tab-items/Works';
 
@@ -18,7 +19,9 @@ export default function WorkTabs() {
                 <Tab.Panel>
                     <Students />
                 </Tab.Panel>
-                <Tab.Panel>Settings</Tab.Panel>
+                <Tab.Panel>
+                    <Settings />
+                </Tab.Panel>
             </Tab.Panels>
         </Tab.Group>
     );

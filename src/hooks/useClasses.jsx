@@ -54,5 +54,27 @@ export function useClasses() {
             .finally(() => setIsLoading(false));
     };
 
-    return { isLoading, createClass, joinClass };
+    const deleteClass = async ({ id, ...props }) => {
+        setIsLoading(true);
+
+        axios
+            .delete(`/classes/${id}`)
+            .then((res) => {
+                navigate(`/`);
+                toast.success(res.data.message);
+            })
+            .catch((error) => {
+                console.error(error);
+                if (![401, 404, 403].includes(error.response.status))
+                    throw error;
+                if ([401, 404, 403].includes(error.response.status))
+                    toast.error(
+                        error.response.data.message ||
+                            error.response.data.errorMessage
+                    );
+            })
+            .finally(() => setIsLoading(false));
+    };
+
+    return { isLoading, createClass, joinClass, deleteClass };
 }
