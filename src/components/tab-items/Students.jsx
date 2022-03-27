@@ -7,21 +7,25 @@ import HeaderTabItem from './HeaderTabItem';
 import useSWR from 'swr';
 import { fetcher } from '../../utils/fetcher';
 import Spinner from '../Spinner';
+import UserCard from '../cards/UserCard';
 
-export default function Works() {
+export default function Students() {
     useEffect(() => {
-        document.title = PAGE_TITLES.WORKS;
+        document.title = PAGE_TITLES.STUDENTS;
     }, []);
 
     const params = useParams();
 
-    const { data, error } = useSWR(`/classes/${params.id}/works`, fetcher);
+    const { data, error } = useSWR(
+        `/classes/${params.id}?with_students=true`,
+        fetcher
+    );
 
     // loading
     if (!data)
         return (
             <>
-                <HeaderTabItem title={data?.data?.name} />
+                <HeaderTabItem title="Students" withInputSearch={false} />
                 <div className="py-10 flex items-center justify-center">
                     <Spinner
                         styleClassName="text-indigo-500"
@@ -32,7 +36,8 @@ export default function Works() {
         );
 
     const classData = data?.data;
-    const works = classData?.works;
+    const students = classData?.students;
+    const teacher = classData?.teacher;
 
     return (
         <>
@@ -40,16 +45,26 @@ export default function Works() {
                 maxWidthClass="max-w-2xl"
                 className="w-full py-10 min-h-screen"
             >
-                <HeaderTabItem title={classData.name} />
-
+                <HeaderTabItem title="Students" withInputSearch={false} />
+                <div>
+                    <div className="mb-4">
+                        <small className="text-md font-bold text-gray-600 uppercase block mb-4">
+                            Teacher
+                        </small>
+                        <UserCard key={teacher._id} {...teacher} />
+                    </div>
+                    <small className="text-md font-bold text-gray-600 uppercase block mb-4">
+                        Students
+                    </small>
+                </div>
                 <div className="space-y-2">
-                    {works && works.length > 0 ? (
-                        works.map((work) => (
-                            <WorkCard key={work._id} {...work} />
+                    {students && students.length > 0 ? (
+                        students.map((student) => (
+                            <UserCard key={student._id} {...student} />
                         ))
                     ) : (
                         <h3 className="text-lg font-bold text-center py-10 text-red-500">
-                            This class has no works.
+                            This class has no students.
                         </h3>
                     )}
                 </div>

@@ -6,6 +6,7 @@ const PAGE_TITLES = {
     MY_JOINED_CLASSES: 'My joined classes - Skuly',
     PRESENCES: 'Presences - Skuly',
     CREATE_NEW_CLASS: 'Create new class - Skuly',
+    STUDENTS: 'Students - Skuly',
 };
 
 export default PAGE_TITLES;
