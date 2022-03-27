@@ -81,10 +81,12 @@ export default function Settings() {
                     <div className="flex items-center justify-end space-x-3">
                         {user._id === classData.teacher && (
                             <Button
-                                styleClassName="bg-red-500 hover:bg-red-600 text-white focus:ring-red-600 w-full md:w-auto"
+                                className="w-full md:w-auto"
                                 onClick={handleDeleteClass}
                                 styleClassName={
-                                    isLoading ? 'text-white bg-indigo-400' : ''
+                                    isLoading
+                                        ? 'text-white bg-red-400'
+                                        : 'bg-red-500 hover:bg-red-600 text-white focus:ring-red-600'
                                 }
                                 disabled={isLoading}
                             >

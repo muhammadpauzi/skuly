@@ -17,7 +17,7 @@ export default function Button({
         className ? className : '',
         paddingClassName,
         textSizeClassName,
-        'cursor-pointerborder border-transparent rounded font-medium focus:ring-2 ring-offset-2 transition'
+        'cursor-pointer border border-transparent rounded font-medium focus:ring-2 ring-offset-2 transition'
     );
     styleClassName =
         styleClassName ||

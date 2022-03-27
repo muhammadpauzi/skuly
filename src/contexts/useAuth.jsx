@@ -92,11 +92,13 @@ export function AuthProvider({ children }) {
     };
 
     const signOut = async () => {
+        setIsLoading(true);
         if (!error) {
             const { data } = await axios.delete('/auth/sign-out');
             setUser(null);
             toast.success(data.message);
         }
+        setIsLoading(false);
         navigate('/sign-in');
     };
 

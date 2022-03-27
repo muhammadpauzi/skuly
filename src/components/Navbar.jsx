@@ -12,6 +12,7 @@ import AppLink from './app/AppLink';
 import Container from './Container';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/useAuth';
+import Spinner from './Spinner';
 
 const links = [
     {
@@ -61,10 +62,21 @@ export default function Navbar() {
                     <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-2">
                         {user ? (
                             <Button
-                                styleClassName="bg-red-500 hover:bg-red-600 text-white focus:ring-red-600"
                                 onClick={() => signOut()}
+                                styleClassName={
+                                    isLoading
+                                        ? 'text-white bg-red-400'
+                                        : 'bg-red-500 hover:bg-red-600 text-white focus:ring-red-600'
+                                }
+                                disabled={isLoading}
                             >
-                                Sign Out
+                                {isLoading ? (
+                                    <>
+                                        <Spinner className="mr-3" /> Wait...
+                                    </>
+                                ) : (
+                                    'Sign Out'
+                                )}
                             </Button>
                         ) : (
                             <>
@@ -134,10 +146,22 @@ export default function Navbar() {
                             <div>
                                 {user ? (
                                     <Button
-                                        styleClassName="bg-red-500 hover:bg-red-600 text-white focus:ring-red-600 w-full"
                                         onClick={() => signOut()}
+                                        styleClassName={
+                                            isLoading
+                                                ? 'text-white bg-red-400'
+                                                : 'bg-red-500 hover:bg-red-600 text-white focus:ring-red-600 w-full'
+                                        }
+                                        disabled={isLoading}
                                     >
-                                        Sign Out
+                                        {isLoading ? (
+                                            <>
+                                                <Spinner className="mr-3" />{' '}
+                                                Wait...
+                                            </>
+                                        ) : (
+                                            'Sign Out'
+                                        )}
                                     </Button>
                                 ) : (
                                     <>
