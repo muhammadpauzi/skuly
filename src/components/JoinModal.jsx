@@ -1,6 +1,7 @@
 import { Dialog } from '@headlessui/react';
 import { UserAddIcon } from '@heroicons/react/solid';
 import { useState } from 'react';
+import { useClasses } from '../hooks/useClasses';
 import Button from './forms/Button';
 import Input from './forms/Input';
 import Label from './forms/Label';
@@ -8,10 +9,12 @@ import Modal from './Modal';
 
 export default function JoinModal({ isOpen, setIsOpen }) {
     const [code, setCode] = useState('');
+    const { joinClass } = useClasses();
 
-    function handleJoinClass() {
-        // ...
-    }
+    const handleJoinClass = async () => {
+        await joinClass({ code });
+        setCode('');
+    };
 
     return (
         <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
@@ -38,7 +41,7 @@ export default function JoinModal({ isOpen, setIsOpen }) {
                         className="mt-8 space-y-6"
                         action="#"
                         method="POST"
-                        onSubmit={() => {}}
+                        onSubmit={handleJoinClass}
                     >
                         <div>
                             <Label
@@ -51,7 +54,7 @@ export default function JoinModal({ isOpen, setIsOpen }) {
                                 id="code"
                                 name="code"
                                 type="text"
-                                maxLength={6}
+                                maxLength={20}
                                 autoComplete="code"
                                 required
                                 onChange={(e) => setCode(e.target.value)}

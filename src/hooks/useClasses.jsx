@@ -18,7 +18,10 @@ export function useClasses() {
                 toast.success(res.data.message);
             })
             .catch((error) => {
-                if (![422].includes(error.response.status)) throw error;
+                if (![401, 422, 409].includes(error.response.status))
+                    throw error;
+                if ([401, 409].includes(error.response.status))
+                    setErrors(error.response.data.message);
                 if (error.response.status == 422)
                     setErrors(
                         Object.values(error.response.data.errors)
@@ -29,5 +32,27 @@ export function useClasses() {
             .finally(() => setIsLoading(false));
     };
 
-    return { isLoading, createClass };
+    const joinClass = async ({ code, ...props }) => {
+        setIsLoading(true);
+
+        axios
+            .post(`/classes/join?code=${code}`, props)
+            .then((res) => {
+                navigate(`/classes/${res.data._id}`);
+                toast.success(res.data.message);
+            })
+            .catch((error) => {
+                console.error(error);
+                if (![401, 404, 403].includes(error.response.status))
+                    throw error;
+                if ([401, 404, 403].includes(error.response.status))
+                    toast.error(
+                        error.response.data.message ||
+                            error.response.data.errorMessage
+                    );
+            })
+            .finally(() => setIsLoading(false));
+    };
+
+    return { isLoading, createClass, joinClass };
 }
