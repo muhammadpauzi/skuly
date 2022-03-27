@@ -4,7 +4,7 @@ import {
   MenuIcon,
   XIcon,
   PencilIcon,
-  PencilAltIcon,
+  InformationCircleIcon,
 } from "@heroicons/react/outline";
 import Logo from "./app/Logo";
 import Button from "./forms/Button";
@@ -15,14 +15,14 @@ import { useAuth } from "../contexts/useAuth";
 
 const links = [
   {
-    name: "My Classes",
-    href: "/my-classes",
-    icon: PencilIcon,
+    name: "Classes",
+    href: "/",
+    Icon: PencilIcon,
   },
   {
-    name: "Classes",
-    href: "/classes",
-    icon: PencilAltIcon,
+    name: "About",
+    href: "/about",
+    Icon: InformationCircleIcon,
   },
 ];
 
@@ -38,7 +38,10 @@ export default function Navbar() {
               {links.map((link, i) => {
                 return (
                   <AppLink key={i} to={link.href}>
-                    {link.name}
+                    <div className="flex items-center">
+                      <link.Icon className="w-4 h-4 mr-1" />
+                      {link.name}
+                    </div>
                   </AppLink>
                 );
               })}
@@ -106,7 +109,10 @@ export default function Navbar() {
                 {links.map((link, i) => {
                   return (
                     <AppLink key={i} to={link.href} className="block w-full">
-                      {link.name}
+                      <div className="flex items-center">
+                        <link.Icon className="w-4 h-4 mr-1" />
+                        {link.name}
+                      </div>
                     </AppLink>
                   );
                 })}

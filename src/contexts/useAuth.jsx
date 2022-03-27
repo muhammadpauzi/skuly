@@ -95,13 +95,6 @@ export function AuthProvider({ children }) {
     navigate("/sign-in");
   };
 
-  // useEffect(() => {
-  // if (middleware == "guest" && redirectIfAuthenticated && user)
-  //   navigate(redirectIfAuthenticated);
-  // if (middleware == "auth" && !user && !error) navigate("/login");
-  // if (middleware == "auth" && !user && error) logout();
-  // }, [user, loading, error]);
-
   const memeoedValue = useMemo(
     () => ({ user, isLoading, error, signIn, signOut, signUp }),
     [user, isLoading, error]
