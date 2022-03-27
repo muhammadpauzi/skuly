@@ -7,11 +7,11 @@ import Input from "../components/Input";
 import Label from "../components/Label";
 import PAGE_TITLES from "../constants/pageTitles";
 
-export default function Login() {
+export default function SignIn() {
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
-    document.title = PAGE_TITLES.LOGIN;
+    document.title = PAGE_TITLES.SIGN_IN;
   });
 
   const handleSubmit = async (e) => {

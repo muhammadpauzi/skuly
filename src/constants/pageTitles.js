@@ -1,6 +1,6 @@
 const PAGE_TITLES = {
-  LOGIN: `Log in - Skuly`,
-  REGISTER: `Register - Skuly`,
+  SIGN_IN: `Sign in - Skuly`,
+  SIGN_UP: `Create an account - Skuly`,
   MY_CLASSES: "My Classes - Skuly",
 };
 

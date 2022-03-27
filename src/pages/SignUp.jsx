@@ -8,14 +8,9 @@ import Spinner from "../components/Spinner";
 import SuccessMessage from "../components/SuccessMessage";
 import PAGE_TITLES from "../constants/pageTitles";
 
-export default function Register() {
-  const [errors, setErrors] = useState([]);
-  const [isRegisterLoading, setIsRegisterLoading] = useState(false);
-  const [isRegisterSuccess, setIsRegisterSuccess] = useState(false);
-  const [registerMessage, setRegisterMessage] = useState("");
-
+export default function SignUp() {
   useEffect(() => {
-    document.title = PAGE_TITLES.REGISTER;
+    document.title = PAGE_TITLES.SIGN_UP;
   });
 
   const handleSubmit = async (e) => {
