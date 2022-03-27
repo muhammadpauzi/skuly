@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import useSWR from 'swr';
 import PAGE_TITLES from '../../constants/pageTitles';
 import { fetcher } from '../../utils/fetcher';
 import ClassCard from '../cards/ClassCard';
+import HeaderTabItem from '../HeaderTabItem';
 import Spinner from '../Spinner';
-import Input from '../forms/Input';
-import MyClassesHeader from './MyClassesHeader';
 
 export default function MyClasses() {
     useEffect(() => {
@@ -18,7 +17,7 @@ export default function MyClasses() {
     if (!data)
         return (
             <>
-                <MyClassesHeader />
+                <HeaderTabItem title="My Classes" />
                 <div className="py-10 flex items-center justify-center">
                     <Spinner
                         styleClassName="text-orange-500"
@@ -32,7 +31,7 @@ export default function MyClasses() {
 
     return (
         <>
-            <MyClassesHeader />
+            <HeaderTabItem title="My Classes" />
             <div className="space-y-2">
                 {classes && classes.length > 0 ? (
                     classes.map((_class) => (
