@@ -10,10 +10,7 @@ export default function ClassCard({ _id, name, description, teacher }) {
         >
             <h3 className="text-lg mb-3 font-bold text-gray-800">{name}</h3>
             <p className="block text-sm text-gray-600 mb-4">{description}</p>
-            <span
-                to="/teacher/asd"
-                className="text-sm text-gray-800 hover:text-indigo-500 flex items-center"
-            >
+            <span className="text-sm text-gray-700 flex items-center">
                 <UserIcon className="w-5 h-5 mr-2" /> {teacher.name}
             </span>
         </AppLink>
