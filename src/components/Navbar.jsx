@@ -11,6 +11,7 @@ import Button from "./forms/Button";
 import AppLink from "./app/AppLink";
 import Container from "./Container";
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/useAuth";
 
 const links = [
   {
@@ -26,6 +27,7 @@ const links = [
 ];
 
 export default function Navbar() {
+  const { user, signOut } = useAuth();
   return (
     <Popover className="relative bg-white z-50 border-b-2 border-gray-100">
       <Container>
@@ -51,16 +53,27 @@ export default function Navbar() {
             </div>
           </div>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-2">
-            <Button
-              as={Link}
-              to="/sign-in"
-              styleClassName="bg-orange-50 hover:bg-orange-100 text-orange-500 focus:ring-orange-100"
-            >
-              Sign in
-            </Button>
-            <Button as={Link} to="/sign-up">
-              Create an account
-            </Button>
+            {user ? (
+              <Button
+                styleClassName="bg-red-500 hover:bg-red-600 text-white focus:ring-red-600"
+                onClick={() => signOut()}
+              >
+                Sign Out
+              </Button>
+            ) : (
+              <>
+                <Button
+                  as={Link}
+                  to="/sign-in"
+                  styleClassName="bg-orange-50 hover:bg-orange-100 text-orange-500 focus:ring-orange-100"
+                >
+                  Sign in
+                </Button>
+                <Button as={Link} to="/sign-up">
+                  Create an account
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </Container>

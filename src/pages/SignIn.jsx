@@ -10,11 +10,12 @@ import { useAuth } from "../contexts/useAuth";
 
 export default function SignIn() {
   const [errors, setErrors] = useState([]);
-  const { signIn, error, loading } = useAuth();
+  const { signIn, error, isLoading } = useAuth();
   const [fields, setFields] = useState({
     username: "",
     password: "",
   });
+  console.log(isLoading);
 
   useEffect(() => {
     document.title = PAGE_TITLES.SIGN_IN;
@@ -48,7 +49,7 @@ export default function SignIn() {
             Sign in to your account
           </h2>
         </div>
-        {/* <ErrorMessage errors={errors} /> */}
+        <ErrorMessage errors={errors} />
         <form
           className="mt-8 space-y-6"
           action="#"
@@ -99,8 +100,13 @@ export default function SignIn() {
           </div>
 
           <div>
-            <Button type="submit" className="w-full">
-              {loading ? "Wait..." : "Sign in"}
+            <Button
+              type="submit"
+              className="w-full"
+              styleClassName={isLoading ? "text-white bg-orange-400" : ""}
+              disabled={isLoading}
+            >
+              {isLoading ? "Wait..." : "Sign in"}
             </Button>
           </div>
         </form>

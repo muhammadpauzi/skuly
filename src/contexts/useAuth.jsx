@@ -6,8 +6,9 @@ import LoadingScreen from "../components/LoadingScreen";
 const AuthContext = createContext({
   user: null,
   error: null,
-  loading: true,
+  isLoading: false,
   signIn: () => {},
+  signOut: () => {},
 });
 
 export function AuthProvider({ children }) {
@@ -15,7 +16,7 @@ export function AuthProvider({ children }) {
   const location = useLocation();
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [isLoadingInitial, setIsLoadingInitial] = useState(true);
 
   useEffect(() => {
@@ -26,8 +27,6 @@ export function AuthProvider({ children }) {
     axios
       .get("/users/me")
       .then((res) => {
-        console.log(res.data);
-        console.log("GET ME");
         setUser(res.data.data);
       })
       .catch((error) => {})
@@ -48,7 +47,7 @@ export function AuthProvider({ children }) {
       .catch((error) => {
         if (![401, 422].includes(error.response.status)) throw error;
         if (error.response.status == 401)
-          setErrors(error.response.data.message);
+          setErrors([error.response.data.message]);
         if (error.response.status == 422)
           setErrors(Object.values(error.response.data.errors).flat());
       })
@@ -70,13 +69,13 @@ export function AuthProvider({ children }) {
   //     });
   // };
 
-  // const logout = async () => {
-  //   if (!error) {
-  //     await axios.delete("/auth/logout");
-  //     mutate();
-  //   }
-  //   navigate("/login");
-  // };
+  const signOut = async () => {
+    if (!error) {
+      await axios.delete("/auth/sign-out");
+      setUser(null);
+    }
+    navigate("/sign-in");
+  };
 
   // useEffect(() => {
   // if (middleware == "guest" && redirectIfAuthenticated && user)
@@ -86,7 +85,7 @@ export function AuthProvider({ children }) {
   // }, [user, loading, error]);
 
   const memeoedValue = useMemo(
-    () => ({ user, isLoading, error, signIn }),
+    () => ({ user, isLoading, error, signIn, signOut }),
     [user, isLoading, error]
   );
 
