@@ -2,6 +2,7 @@ import axios from "../utils/axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import LoadingScreen from "../components/LoadingScreen";
+import { toast } from "react-toastify";
 
 const AuthContext = createContext({
   user: null,
@@ -43,6 +44,7 @@ export function AuthProvider({ children }) {
         const userData = res.data.data;
         setUser(userData);
         navigate("/");
+        toast.success(res.data.message);
       })
       .catch((error) => {
         if (![401, 422].includes(error.response.status)) throw error;
@@ -71,8 +73,9 @@ export function AuthProvider({ children }) {
 
   const signOut = async () => {
     if (!error) {
-      await axios.delete("/auth/sign-out");
+      const { data } = await axios.delete("/auth/sign-out");
       setUser(null);
+      toast.success(data.message);
     }
     navigate("/sign-in");
   };

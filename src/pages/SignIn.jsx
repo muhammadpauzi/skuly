@@ -15,7 +15,6 @@ export default function SignIn() {
     username: "",
     password: "",
   });
-  console.log(isLoading);
 
   useEffect(() => {
     document.title = PAGE_TITLES.SIGN_IN;
@@ -28,7 +27,6 @@ export default function SignIn() {
       username: fields.username,
       password: fields.password,
     });
-    console.log(errors);
   };
 
   const handleChange = (e) => {

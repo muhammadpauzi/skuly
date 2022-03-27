@@ -7,6 +7,8 @@ import Classes from "./pages/Classes";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnAuthenticatedRoute from "./components/UnAuthenticatedRoute";
 import { AuthProvider } from "./contexts/useAuth";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -50,6 +52,7 @@ function App() {
           </Routes>
         </AuthProvider>
       </Router>
+      <ToastContainer />
     </div>
   );
 }
