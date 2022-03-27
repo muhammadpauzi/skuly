@@ -21,7 +21,7 @@ export default function Button({
     );
     styleClassName =
         styleClassName ||
-        'text-white bg-indigo-500 hover:bg-indigo-400 focus:ring-indigo-400';
+        'text-white bg-violet-500 hover:bg-violet-400 focus:ring-violet-400';
 
     return (
         <ElementAsButton

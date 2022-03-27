@@ -11,7 +11,9 @@ export default function JoinModal({ isOpen, setIsOpen }) {
     const [code, setCode] = useState('');
     const { joinClass } = useClasses();
 
-    const handleJoinClass = async () => {
+    const handleJoinClass = async (e) => {
+        e.preventDefault();
+        if (!code.trim()) return;
         await joinClass({ code });
         setCode('');
     };
