@@ -13,7 +13,7 @@ import CreateClass from './pages/CreateClass';
 
 function App() {
     return (
-        <div className="h-full bg-gray-50">
+        <div className="h-full bg-gray-50 relative">
             <Router>
                 <AuthProvider>
                     <Navbar />

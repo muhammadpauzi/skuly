@@ -132,25 +132,36 @@ export default function Navbar() {
                         </div>
                         <div className="py-6 px-5 space-y-6">
                             <div>
-                                <Button
-                                    as={Link}
-                                    to="/sign-up"
-                                    className="w-full block text-center"
-                                >
-                                    Create an account
-                                </Button>
-                                <p className="mt-6 text-center text-base font-medium text-gray-500">
-                                    <span className="block md:inline-block mr-0 mb-5 md:mb-0 md:mr-4">
-                                        Already have an account?
-                                    </span>
+                                {user ? (
                                     <Button
-                                        as={Link}
-                                        to="/sign-in"
-                                        className="block md:inline-block bg-indigo-50 hover:bg-indigo-100 text-indigo-500 focus:ring-indigo-100"
+                                        styleClassName="bg-red-500 hover:bg-red-600 text-white focus:ring-red-600 w-full"
+                                        onClick={() => signOut()}
                                     >
-                                        Sign in
+                                        Sign Out
                                     </Button>
-                                </p>
+                                ) : (
+                                    <>
+                                        <Button
+                                            as={Link}
+                                            to="/sign-up"
+                                            className="w-full block text-center"
+                                        >
+                                            Create an account
+                                        </Button>
+                                        <p className="mt-6 text-center text-base font-medium text-gray-500">
+                                            <span className="block md:inline-block mr-0 mb-5 md:mb-0 md:mr-4">
+                                                Already have an account?
+                                            </span>
+                                            <Button
+                                                as={Link}
+                                                to="/sign-in"
+                                                className="block md:inline-block bg-indigo-50 hover:bg-indigo-100 text-indigo-500 focus:ring-indigo-100"
+                                            >
+                                                Sign in
+                                            </Button>
+                                        </p>
+                                    </>
+                                )}
                             </div>
                         </div>
                     </div>
