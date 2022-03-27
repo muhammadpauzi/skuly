@@ -6,7 +6,7 @@ import Input from "../forms/Input";
 export default function MyClasses() {
   useEffect(() => {
     document.title = PAGE_TITLES.MY_CLASSES;
-  });
+  }, []);
 
   return (
     <>

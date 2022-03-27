@@ -7,7 +7,7 @@ import WorkCard from "../cards/WorkCard";
 export default function Works() {
   useEffect(() => {
     document.title = PAGE_TITLES.WORKS;
-  });
+  }, []);
 
   return (
     <>
