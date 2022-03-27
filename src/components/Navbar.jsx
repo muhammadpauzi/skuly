@@ -140,13 +140,13 @@ export default function Navbar() {
                                     Create an account
                                 </Button>
                                 <p className="mt-6 text-center text-base font-medium text-gray-500">
-                                    <span className="inline-block mr-4">
+                                    <span className="block md:inline-block mr-0 mb-5 md:mb-0 md:mr-4">
                                         Already have an account?
                                     </span>
                                     <Button
                                         as={Link}
                                         to="/sign-in"
-                                        className="bg-indigo-50 hover:bg-indigo-100 text-indigo-500 focus:ring-indigo-100"
+                                        className="block md:inline-block bg-indigo-50 hover:bg-indigo-100 text-indigo-500 focus:ring-indigo-100"
                                     >
                                         Sign in
                                     </Button>

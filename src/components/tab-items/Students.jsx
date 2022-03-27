@@ -8,6 +8,7 @@ import useSWR from 'swr';
 import { fetcher } from '../../utils/fetcher';
 import Spinner from '../Spinner';
 import UserCard from '../cards/UserCard';
+import TextMessageError from '../TextMessageError';
 
 export default function Students() {
     useEffect(() => {
@@ -63,9 +64,9 @@ export default function Students() {
                             <UserCard key={student._id} {...student} />
                         ))
                     ) : (
-                        <h3 className="text-lg font-bold text-center py-10 text-red-500">
+                        <TextMessageError>
                             This class has no students.
-                        </h3>
+                        </TextMessageError>
                     )}
                 </div>
             </Container>

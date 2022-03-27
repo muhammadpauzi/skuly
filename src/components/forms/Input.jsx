@@ -3,7 +3,7 @@ import { classNames } from '../../utils';
 export default function Input({ styleClassName, className, ...props }) {
     const baseStyleClassName = classNames(
         className ? className : '',
-        'appearance-none rounded-md relative block w-full px-3 py-2.5 focus:z-10 sm:text-sm transition'
+        'appearance-none rounded-md relative block w-full px-3 py-2.5 focus:z-10 text-sm md:text-sm transition'
     );
     styleClassName =
         styleClassName ||

@@ -7,6 +7,7 @@ import HeaderTabItem from './HeaderTabItem';
 import useSWR from 'swr';
 import { fetcher } from '../../utils/fetcher';
 import Spinner from '../Spinner';
+import TextMessageError from '../TextMessageError';
 
 export default function Works() {
     useEffect(() => {
@@ -48,9 +49,9 @@ export default function Works() {
                             <WorkCard key={work._id} {...work} />
                         ))
                     ) : (
-                        <h3 className="text-lg font-bold text-center py-10 text-red-500">
+                        <TextMessageError>
                             This class has no works.
-                        </h3>
+                        </TextMessageError>
                     )}
                 </div>
             </Container>

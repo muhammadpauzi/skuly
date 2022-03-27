@@ -7,6 +7,7 @@ import ClassCard from '../cards/ClassCard';
 import HeaderTabItem from './HeaderTabItem';
 import Spinner from '../Spinner';
 import Button from '../forms/Button';
+import TextMessageError from '../TextMessageError';
 
 export default function MyClasses() {
     useEffect(() => {
@@ -49,9 +50,9 @@ export default function MyClasses() {
                         <ClassCard key={_class._id} {..._class} />
                     ))
                 ) : (
-                    <h3 className="text-lg font-bold text-center py-10 text-red-500">
+                    <TextMessageError>
                         You don't have any classes.
-                    </h3>
+                    </TextMessageError>
                 )}
             </div>
         </>

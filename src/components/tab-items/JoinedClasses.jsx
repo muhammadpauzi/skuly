@@ -53,9 +53,9 @@ export default function MyJoinedClasses() {
                         <ClassCard key={_class._id} {..._class} />
                     ))
                 ) : (
-                    <h3 className="text-lg font-bold text-center py-10 text-red-500">
+                    <TextMessageError>
                         You haven't joined any classes yet.
-                    </h3>
+                    </TextMessageError>
                 )}
             </div>
             <JoinModal

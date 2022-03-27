@@ -14,7 +14,7 @@ export default function AppTab({
     const baseStyleClassName = classNames(
         className ? className : '',
         paddingClassName,
-        'text-base text-center transition focus:ring-2 ring-offset-2 font-medium border-b-2 border-b-gray-200'
+        'text-sm sm:text-base text-center transition focus:ring-2 ring-offset-2 font-medium border-b-2 border-b-gray-200'
     );
     styleClassName =
         styleClassName ||

@@ -51,7 +51,7 @@ export default function SignIn() {
                 className="w-full space-y-8 min-h-screen py-10"
             >
                 <div>
-                    <h2 className="mt-6 text-center text-3xl font-black text-gray-900">
+                    <h2 className="mt-6 text-center text-lg md:text-3xl font-black text-gray-900">
                         Sign in to your account
                     </h2>
                 </div>

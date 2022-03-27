@@ -33,7 +33,7 @@ export default function FormCreateClass() {
         <>
             <div className="py-9 px-6 bg-white border-2 border-gray-100 rounded-md">
                 <div>
-                    <h2 className="text-center text-3xl font-black text-gray-900">
+                    <h2 className="text-center text-lg md:text-3xl font-black text-gray-900">
                         Create a new class
                     </h2>
                 </div>

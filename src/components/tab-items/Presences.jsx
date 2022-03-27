@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import PAGE_TITLES from '../../constants/pageTitles';
+import TextMessageError from '../TextMessageError';
 import HeaderTabItem from './HeaderTabItem';
 
 export default function Presences() {
@@ -10,9 +11,9 @@ export default function Presences() {
     return (
         <>
             <HeaderTabItem title="Presences" withInputSearch={false} />
-            <h3 className="text-lg font-bold text-center py-10 text-red-500">
+            <TextMessageError>
                 This feature is not yet available.
-            </h3>
+            </TextMessageError>
         </>
     );
 }
