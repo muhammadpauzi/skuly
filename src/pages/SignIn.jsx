@@ -3,13 +3,17 @@ import Button from "../components/forms/Button";
 import CheckBox from "../components/forms/CheckBox";
 import Container from "../components/Container";
 import ErrorMessage from "../components/ErrorMessage";
+import Spinner from "../components/Spinner";
 import Input from "../components/forms/Input";
 import Label from "../components/forms/Label";
 import PAGE_TITLES from "../constants/pageTitles";
 import { useAuth } from "../contexts/useAuth";
+import { useLocation } from "react-router-dom";
+import SuccessMessage from "../components/SuccessMessage";
 
 export default function SignIn() {
   const [errors, setErrors] = useState([]);
+  const location = useLocation();
   const { signIn, error, isLoading } = useAuth();
   const [fields, setFields] = useState({
     username: "",
@@ -18,7 +22,11 @@ export default function SignIn() {
 
   useEffect(() => {
     document.title = PAGE_TITLES.SIGN_IN;
-  });
+    if (location?.state?.isSignUpSuccess)
+      setFields({
+        username: location?.state?.username,
+      });
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,6 +56,9 @@ export default function SignIn() {
           </h2>
         </div>
         <ErrorMessage errors={errors} />
+        {location?.state?.isSignUpSuccess && (
+          <SuccessMessage>Please Sign in!</SuccessMessage>
+        )}
         <form
           className="mt-8 space-y-6"
           action="#"
@@ -104,7 +115,13 @@ export default function SignIn() {
               styleClassName={isLoading ? "text-white bg-orange-400" : ""}
               disabled={isLoading}
             >
-              {isLoading ? "Wait..." : "Sign in"}
+              {isLoading ? (
+                <>
+                  <Spinner className="mr-3" /> Wait...
+                </>
+              ) : (
+                "Sign in"
+              )}
             </Button>
           </div>
         </form>

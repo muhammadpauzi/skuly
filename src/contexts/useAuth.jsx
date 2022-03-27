@@ -10,6 +10,7 @@ const AuthContext = createContext({
   isLoading: false,
   signIn: () => {},
   signOut: () => {},
+  signUp: () => {},
 });
 
 export function AuthProvider({ children }) {
@@ -56,20 +57,34 @@ export function AuthProvider({ children }) {
       .finally(() => setIsLoading(false));
   };
 
-  // const register = async ({ setErrors, ...props }) => {
-  //   setErrors([]);
+  const signUp = async ({ setErrors, ...props }) => {
+    setErrors([]);
+    setIsLoading(true);
 
-  //   axios
-  //     .post("/auth/register", props)
-  //     .then(() => mutate() && navigate("/login"))
-  //     .catch((error) => {
-  //       if (![401, 422, 409].includes(error.response.status)) throw error;
-  //       if ([401, 409].includes(error.response.status))
-  //         setErrors(error.response.data.message);
-  //       if (error.response.status == 422)
-  //         setErrors(Object.values(error.response.data.errors).flat());
-  //     });
-  // };
+    axios
+      .post("/auth/sign-up", props)
+      .then((res) => {
+        navigate("/sign-in", {
+          state: {
+            username: res.data.data.username,
+            isSignUpSuccess: true,
+          },
+        });
+        toast.success(res.data.message);
+      })
+      .catch((error) => {
+        if (![401, 422, 409].includes(error.response.status)) throw error;
+        if ([401, 409].includes(error.response.status))
+          setErrors(error.response.data.message);
+        if (error.response.status == 422)
+          setErrors(
+            Object.values(error.response.data.errors)
+              .map((err) => err.message)
+              .flat()
+          );
+      })
+      .finally(() => setIsLoading(false));
+  };
 
   const signOut = async () => {
     if (!error) {
@@ -88,7 +103,7 @@ export function AuthProvider({ children }) {
   // }, [user, loading, error]);
 
   const memeoedValue = useMemo(
-    () => ({ user, isLoading, error, signIn, signOut }),
+    () => ({ user, isLoading, error, signIn, signOut, signUp }),
     [user, isLoading, error]
   );
 

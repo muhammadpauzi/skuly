@@ -7,14 +7,36 @@ import Label from "../components/forms/Label";
 import Spinner from "../components/Spinner";
 import SuccessMessage from "../components/SuccessMessage";
 import PAGE_TITLES from "../constants/pageTitles";
+import { useAuth } from "../contexts/useAuth";
 
 export default function SignUp() {
+  const [errors, setErrors] = useState([]);
+  const { signUp, error, isLoading } = useAuth();
+  const [fields, setFields] = useState({
+    username: "",
+    password: "",
+    email: "",
+  });
+
   useEffect(() => {
     document.title = PAGE_TITLES.SIGN_UP;
-  });
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    await signUp({
+      setErrors,
+      username: fields.username,
+      password: fields.password,
+      email: fields.email,
+    });
+  };
+
+  const handleChange = (e) => {
+    setFields({
+      ...fields,
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
@@ -28,15 +50,9 @@ export default function SignUp() {
             Create a new account
           </h2>
         </div>
+
         <ErrorMessage errors={errors} />
-        {!isRegisterLoading && isRegisterSuccess && (
-          <SuccessMessage>
-            {registerMessage}. Please click this link to{" "}
-            <Link to="/login" className="underline decoration-green-500">
-              Log in.
-            </Link>
-          </SuccessMessage>
-        )}
+
         <form className="mt-8 space-y-6" method="POST" onSubmit={handleSubmit}>
           <input type="hidden" name="remember" defaultValue="true" />
           <div className="rounded-md shadow-sm -space-y-px">
@@ -50,19 +66,7 @@ export default function SignUp() {
                 type="text"
                 autoComplete="username"
                 required
-                className="mb-2"
-              />
-            </div>
-            <div>
-              <Label htmlFor="name" className="mb-1 font-semibold">
-                Name
-              </Label>
-              <Input
-                id="name"
-                name="name"
-                type="text"
-                autoComplete="name"
-                required
+                onChange={handleChange}
                 className="mb-2"
               />
             </div>
@@ -76,6 +80,7 @@ export default function SignUp() {
                 type="email"
                 autoComplete="email"
                 required
+                onChange={handleChange}
                 className="mb-2"
               />
             </div>
@@ -89,26 +94,26 @@ export default function SignUp() {
                 type="password"
                 autoComplete="current-password"
                 required
+                onChange={handleChange}
                 className="mb-2"
               />
             </div>
           </div>
           <div>
-            {isRegisterLoading ? (
-              <Button
-                type="submit"
-                className="w-full items-center flex justify-center"
-              >
-                <Spinner /> Registering...
-              </Button>
-            ) : (
-              <Button
-                type="submit"
-                className="w-full items-center flex justify-center"
-              >
-                Create account
-              </Button>
-            )}
+            <Button
+              type="submit"
+              className="w-full"
+              styleClassName={isLoading ? "text-white bg-orange-400" : ""}
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <>
+                  <Spinner className="mr-3" /> Creating account...
+                </>
+              ) : (
+                "Create account"
+              )}
+            </Button>
           </div>
         </form>
       </Container>
