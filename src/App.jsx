@@ -4,18 +4,51 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Works from "./pages/WorksPage";
 import Classes from "./pages/Classes";
+import AuthenticatedRoute from "./components/AuthenticatedRoute";
+import UnAuthenticatedRoute from "./components/UnAuthenticatedRoute";
+import { AuthProvider } from "./contexts/useAuth";
 
 function App() {
   return (
     <div className="h-full bg-gray-50">
       <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Classes />} />
-          <Route path="/classes/:id" element={<Works />} />
-          <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/sign-up" element={<SignUp />} />
-        </Routes>
+        <AuthProvider>
+          <Navbar />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <AuthenticatedRoute>
+                  <Classes />
+                </AuthenticatedRoute>
+              }
+            />
+            <Route
+              path="/classes/:id"
+              element={
+                <AuthenticatedRoute>
+                  <Works />
+                </AuthenticatedRoute>
+              }
+            />
+            <Route
+              path="/sign-in"
+              element={
+                <UnAuthenticatedRoute>
+                  <SignIn />
+                </UnAuthenticatedRoute>
+              }
+            />
+            <Route
+              path="/sign-up"
+              element={
+                <UnAuthenticatedRoute>
+                  <SignUp />
+                </UnAuthenticatedRoute>
+              }
+            />
+          </Routes>
+        </AuthProvider>
       </Router>
     </div>
   );

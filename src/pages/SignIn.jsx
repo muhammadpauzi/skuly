@@ -6,9 +6,15 @@ import ErrorMessage from "../components/ErrorMessage";
 import Input from "../components/forms/Input";
 import Label from "../components/forms/Label";
 import PAGE_TITLES from "../constants/pageTitles";
+import { useAuth } from "../contexts/useAuth";
 
 export default function SignIn() {
   const [errors, setErrors] = useState([]);
+  const { signIn, error, loading } = useAuth();
+  const [fields, setFields] = useState({
+    username: "",
+    password: "",
+  });
 
   useEffect(() => {
     document.title = PAGE_TITLES.SIGN_IN;
@@ -16,6 +22,19 @@ export default function SignIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    await signIn({
+      setErrors,
+      username: fields.username,
+      password: fields.password,
+    });
+    console.log(errors);
+  };
+
+  const handleChange = (e) => {
+    setFields({
+      ...fields,
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
@@ -29,7 +48,7 @@ export default function SignIn() {
             Sign in to your account
           </h2>
         </div>
-        <ErrorMessage errors={errors} />
+        {/* <ErrorMessage errors={errors} /> */}
         <form
           className="mt-8 space-y-6"
           action="#"
@@ -48,6 +67,8 @@ export default function SignIn() {
                 type="text"
                 autoComplete="username"
                 required
+                onChange={handleChange}
+                value={fields.username}
                 className="mb-2"
               />
             </div>
@@ -61,6 +82,8 @@ export default function SignIn() {
                 type="password"
                 autoComplete="current-password"
                 required
+                onChange={handleChange}
+                value={fields.password}
                 className="mb-2"
               />
             </div>
@@ -77,7 +100,7 @@ export default function SignIn() {
 
           <div>
             <Button type="submit" className="w-full">
-              Sign in
+              {loading ? "Wait..." : "Sign in"}
             </Button>
           </div>
         </form>
