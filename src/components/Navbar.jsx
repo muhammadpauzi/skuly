@@ -6,9 +6,9 @@ import {
   PencilIcon,
   PencilAltIcon,
 } from "@heroicons/react/outline";
-import Logo from "./Logo";
-import Button from "./Button";
-import AppLink from "./AppLink";
+import Logo from "./app/Logo";
+import Button from "./forms/Button";
+import AppLink from "./app/AppLink";
 import Container from "./Container";
 import { Link } from "react-router-dom";
 

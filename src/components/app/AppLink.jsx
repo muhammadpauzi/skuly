@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
-import { classNames } from "../utils";
+import { classNames } from "../../utils";
 
 export default function AppLink({
   className,
   children,
+  paddingClassName,
   styleClassName,
   ...props
 }) {
+  paddingClassName = paddingClassName || "px-2 py-1";
   const baseStyleClassName = classNames(
     className ? className : "",
-    "text-base rounded px-2 py-1 transition focus:ring-2 ring-offset-2 font-medium"
+    paddingClassName,
+    "text-base rounded transition focus:ring-2 ring-offset-2 font-medium"
   );
   styleClassName =
     styleClassName || "text-gray-500 hover:text-gray-900 focus:ring-orange-200";

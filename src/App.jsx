@@ -1,8 +1,9 @@
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import MyClasses from "./pages/MyClasses";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import Works from "./pages/WorksPage";
+import Classes from "./pages/Classes";
 
 function App() {
   return (
@@ -10,8 +11,8 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<h1>Home</h1>} />
-          <Route path="/my-classes" element={<MyClasses />} />
+          <Route path="/" element={<Classes />} />
+          <Route path="/classes/:id" element={<Works />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
         </Routes>

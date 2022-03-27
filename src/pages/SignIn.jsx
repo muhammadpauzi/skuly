@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import Button from "../components/Button";
-import CheckBox from "../components/CheckBox";
+import Button from "../components/forms/Button";
+import CheckBox from "../components/forms/CheckBox";
 import Container from "../components/Container";
 import ErrorMessage from "../components/ErrorMessage";
-import Input from "../components/Input";
-import Label from "../components/Label";
+import Input from "../components/forms/Input";
+import Label from "../components/forms/Label";
 import PAGE_TITLES from "../constants/pageTitles";
 
 export default function SignIn() {

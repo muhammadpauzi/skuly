@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { classNames } from "../utils";
+import { classNames } from "../../utils";
 
 export default function Button({
   className,

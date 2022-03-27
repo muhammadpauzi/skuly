@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Button from "../components/Button";
+import Button from "../components/forms/Button";
 import Container from "../components/Container";
 import ErrorMessage from "../components/ErrorMessage";
-import Input from "../components/Input";
-import Label from "../components/Label";
+import Input from "../components/forms/Input";
+import Label from "../components/forms/Label";
 import Spinner from "../components/Spinner";
 import SuccessMessage from "../components/SuccessMessage";
 import PAGE_TITLES from "../constants/pageTitles";
