@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
-import Container from '../Container';
 import PAGE_TITLES from '../../constants/pageTitles';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import WorkCard from '../cards/WorkCard';
 import HeaderTabItem from './HeaderTabItem';
 import useSWR from 'swr';
 import { fetcher } from '../../utils/fetcher';
 import Spinner from '../Spinner';
 import TextMessageError from '../TextMessageError';
+import Button from '../forms/Button';
 
 export default function Works() {
     useEffect(() => {
@@ -37,8 +37,16 @@ export default function Works() {
 
     return (
         <>
-            <HeaderTabItem title={classData.name} />
-
+            <HeaderTabItem title={classData.name}>
+                <Button
+                    as={Link}
+                    to={`/classes/${params.id}/create-work`}
+                    paddingClassName="px-3 py-2.5"
+                    textSizeClassName="text-sm"
+                >
+                    Create new work
+                </Button>
+            </HeaderTabItem>
             <div className="space-y-2">
                 {works && works.length > 0 ? (
                     works.map((work) => <WorkCard key={work._id} {...work} />)

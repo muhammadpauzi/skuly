@@ -7,7 +7,8 @@ const PAGE_TITLES = {
     PRESENCES: 'Presences - Skuly',
     CREATE_NEW_CLASS: 'Create new class - Skuly',
     STUDENTS: 'Students - Skuly',
-    Settings: 'Settings - Skuly',
+    SETTINGS: 'Settings - Skuly',
+    CREATE_NEW_WORK: 'Create new work - Skuly',
 };
 
 export default PAGE_TITLES;

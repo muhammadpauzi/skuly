@@ -11,7 +11,11 @@ export default function ClassCard({ _id, name, description, teacher }) {
             <h3 className="text-md md:text-lg mb-3 font-bold text-gray-800">
                 {name}
             </h3>
-            <p className="block text-sm text-gray-600 mb-4">{description}</p>
+            {description && (
+                <p className="block text-sm text-gray-600 mb-4">
+                    {description}
+                </p>
+            )}
             <span className="text-sm text-gray-700 flex items-center">
                 <UserIcon className="w-5 h-5 mr-2" /> {teacher.name}
             </span>

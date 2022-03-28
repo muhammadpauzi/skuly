@@ -10,6 +10,7 @@ import { AuthProvider } from './contexts/useAuth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CreateClass from './pages/CreateClass';
+import CreateWork from './pages/CreateWork';
 
 function App() {
     return (
@@ -39,6 +40,14 @@ function App() {
                             element={
                                 <AuthenticatedRoute>
                                     <Works />
+                                </AuthenticatedRoute>
+                            }
+                        />
+                        <Route
+                            path="/classes/:id/create-work"
+                            element={
+                                <AuthenticatedRoute>
+                                    <CreateWork />
                                 </AuthenticatedRoute>
                             }
                         />
