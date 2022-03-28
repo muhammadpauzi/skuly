@@ -42,34 +42,29 @@ export default function Students() {
 
     return (
         <>
-            <Container
-                maxWidthClass="max-w-2xl"
-                className="w-full py-10 min-h-screen"
-            >
-                <HeaderTabItem title="Students" withInputSearch={false} />
-                <div>
-                    <div className="mb-4">
-                        <small className="text-md font-bold text-gray-600 uppercase block mb-4">
-                            Teacher
-                        </small>
-                        <UserCard key={teacher._id} {...teacher} />
-                    </div>
+            <HeaderTabItem title="Students" withInputSearch={false} />
+            <div>
+                <div className="mb-4">
                     <small className="text-md font-bold text-gray-600 uppercase block mb-4">
-                        Students
+                        Teacher
                     </small>
+                    <UserCard key={teacher._id} {...teacher} />
                 </div>
-                <div className="space-y-2">
-                    {students && students.length > 0 ? (
-                        students.map((student) => (
-                            <UserCard key={student._id} {...student} />
-                        ))
-                    ) : (
-                        <TextMessageError>
-                            This class has no students.
-                        </TextMessageError>
-                    )}
-                </div>
-            </Container>
+                <small className="text-md font-bold text-gray-600 uppercase block mb-4">
+                    Students
+                </small>
+            </div>
+            <div className="space-y-2">
+                {students && students.length > 0 ? (
+                    students.map((student) => (
+                        <UserCard key={student._id} {...student} />
+                    ))
+                ) : (
+                    <TextMessageError>
+                        This class has no students.
+                    </TextMessageError>
+                )}
+            </div>
         </>
     );
 }

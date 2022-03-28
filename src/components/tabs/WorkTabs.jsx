@@ -12,7 +12,7 @@ export default function WorkTabs() {
                 <AppTab>Students</AppTab>
                 <AppTab>Settings</AppTab>
             </Tab.List>
-            <Tab.Panels>
+            <Tab.Panels className="py-10">
                 <Tab.Panel>
                     <Works />
                 </Tab.Panel>

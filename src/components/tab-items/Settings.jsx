@@ -44,64 +44,59 @@ export default function Settings() {
 
     return (
         <>
-            <Container
-                maxWidthClass="max-w-2xl"
-                className="w-full py-10 min-h-screen"
-            >
-                <HeaderTabItem title="Settings" withInputSearch={false} />
+            <HeaderTabItem title="Settings" withInputSearch={false} />
 
-                <div className="bg-white rounded-md p-7 border-2 border-gray-100 text-indigo-500 font-bold text-sm md:text-md">
-                    <div className="space-y-4 mb-8">
-                        <h4>
-                            Class Name :{' '}
-                            <span className="mt-2 block text-gray-600 font-normal">
-                                {classData?.name}
-                            </span>
-                        </h4>
-                        <h4>
-                            Description :{' '}
-                            <span className="mt-2 block text-gray-600 font-normal">
-                                {classData?.description}
-                            </span>
-                        </h4>
-                        <h4>
-                            Created at :{' '}
-                            <span className="mt-2 block text-gray-600 font-normal">
-                                {classData?.createdAt}
-                            </span>
-                        </h4>
-                        <h4>
-                            Updated at :{' '}
-                            <span className="mt-2 block text-gray-600 font-normal">
-                                {classData?.updatedAt}
-                            </span>
-                        </h4>
-                    </div>
-
-                    <div className="flex items-center justify-end space-x-3">
-                        {user._id === classData.teacher && (
-                            <Button
-                                className="w-full md:w-auto"
-                                onClick={handleDeleteClass}
-                                styleClassName={
-                                    isLoading
-                                        ? 'text-white bg-red-400'
-                                        : 'bg-red-500 hover:bg-red-600 text-white focus:ring-red-600'
-                                }
-                                disabled={isLoading}
-                            >
-                                {isLoading ? (
-                                    <>
-                                        <Spinner className="mr-3" /> Deleting...
-                                    </>
-                                ) : (
-                                    'Delete this class'
-                                )}
-                            </Button>
-                        )}
-                    </div>
+            <div className="bg-white rounded-md p-7 border-2 border-gray-100 text-indigo-500 font-bold text-sm md:text-md">
+                <div className="space-y-4 mb-8">
+                    <h4>
+                        Class Name :{' '}
+                        <span className="mt-2 block text-gray-600 font-normal">
+                            {classData?.name}
+                        </span>
+                    </h4>
+                    <h4>
+                        Description :{' '}
+                        <span className="mt-2 block text-gray-600 font-normal">
+                            {classData?.description}
+                        </span>
+                    </h4>
+                    <h4>
+                        Created at :{' '}
+                        <span className="mt-2 block text-gray-600 font-normal">
+                            {classData?.createdAt}
+                        </span>
+                    </h4>
+                    <h4>
+                        Updated at :{' '}
+                        <span className="mt-2 block text-gray-600 font-normal">
+                            {classData?.updatedAt}
+                        </span>
+                    </h4>
                 </div>
-            </Container>
+
+                <div className="flex items-center justify-end space-x-3">
+                    {user._id === classData.teacher && (
+                        <Button
+                            className="w-full md:w-auto"
+                            onClick={handleDeleteClass}
+                            styleClassName={
+                                isLoading
+                                    ? 'text-white bg-red-400'
+                                    : 'bg-red-500 hover:bg-red-600 text-white focus:ring-red-600'
+                            }
+                            disabled={isLoading}
+                        >
+                            {isLoading ? (
+                                <>
+                                    <Spinner className="mr-3" /> Deleting...
+                                </>
+                            ) : (
+                                'Delete this class'
+                            )}
+                        </Button>
+                    )}
+                </div>
+            </div>
         </>
     );
 }

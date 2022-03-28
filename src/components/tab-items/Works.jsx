@@ -37,24 +37,17 @@ export default function Works() {
 
     return (
         <>
-            <Container
-                maxWidthClass="max-w-2xl"
-                className="w-full py-10 min-h-screen"
-            >
-                <HeaderTabItem title={classData.name} />
+            <HeaderTabItem title={classData.name} />
 
-                <div className="space-y-2">
-                    {works && works.length > 0 ? (
-                        works.map((work) => (
-                            <WorkCard key={work._id} {...work} />
-                        ))
-                    ) : (
-                        <TextMessageError>
-                            This class has no works.
-                        </TextMessageError>
-                    )}
-                </div>
-            </Container>
+            <div className="space-y-2">
+                {works && works.length > 0 ? (
+                    works.map((work) => <WorkCard key={work._id} {...work} />)
+                ) : (
+                    <TextMessageError>
+                        This class has no works.
+                    </TextMessageError>
+                )}
+            </div>
         </>
     );
 }
