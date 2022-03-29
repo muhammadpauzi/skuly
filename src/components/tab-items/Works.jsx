@@ -36,10 +36,9 @@ export default function Works() {
 
     const classData = data?.data;
     const works = classData?.works;
-
     return (
         <>
-            {user._id === classData.teacher ? (
+            {user._id === classData.teacher._id ? (
                 <HeaderTabItem title={classData.name}>
                     <Button
                         as={Link}
