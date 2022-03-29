@@ -21,7 +21,7 @@ export default function Settings() {
     const params = useParams();
     const { data, error } = useSWR(`/classes/${params.id}`, fetcher);
     const { data: codeData, error: codeError } =
-        user._id === data?.data.teacher &&
+        user._id === data?.data?.teacher &&
         useSWR(`/classes/${params.id}/code`, fetcher);
 
     // loading

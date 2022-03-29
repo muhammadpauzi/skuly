@@ -129,6 +129,7 @@ export default function Navbar() {
                             </div>
                             <div className="block md:hidden space-y-4">
                                 {links.map((link, i) => {
+                                    if (link.private && !user) return;
                                     return (
                                         <AppLink
                                             key={i}
