@@ -8,8 +8,10 @@ import { fetcher } from '../../utils/fetcher';
 import Spinner from '../Spinner';
 import TextMessageError from '../TextMessageError';
 import Button from '../forms/Button';
+import { useAuth } from '../../contexts/useAuth';
 
 export default function Works() {
+    const { user } = useAuth();
     useEffect(() => {
         document.title = PAGE_TITLES.WORKS;
     }, []);
@@ -37,16 +39,21 @@ export default function Works() {
 
     return (
         <>
-            <HeaderTabItem title={classData.name}>
-                <Button
-                    as={Link}
-                    to={`/classes/${params.id}/create-work`}
-                    paddingClassName="px-3 py-2.5"
-                    textSizeClassName="text-sm"
-                >
-                    Create new work
-                </Button>
-            </HeaderTabItem>
+            {user._id === classData.teacher ? (
+                <HeaderTabItem title={classData.name}>
+                    <Button
+                        as={Link}
+                        to={`/classes/${params.id}/create-work`}
+                        paddingClassName="px-3 py-2.5"
+                        textSizeClassName="text-sm"
+                    >
+                        Create new work
+                    </Button>
+                </HeaderTabItem>
+            ) : (
+                <HeaderTabItem title={classData.name} />
+            )}
+
             <div className="space-y-2">
                 {works && works.length > 0 ? (
                     works.map((work) => <WorkCard key={work._id} {...work} />)

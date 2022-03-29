@@ -72,6 +72,14 @@ export default function Settings() {
                             {classData?.updatedAt}
                         </span>
                     </h4>
+                    {user._id === classData.teacher && (
+                        <h4>
+                            Class Code :{' '}
+                            <span className="mt-2 block text-gray-600 font-normal">
+                                {classData?.code}
+                            </span>
+                        </h4>
+                    )}
                 </div>
 
                 <div className="flex items-center justify-end space-y-2 md:space-x-3 flex-col md:flex-row">
