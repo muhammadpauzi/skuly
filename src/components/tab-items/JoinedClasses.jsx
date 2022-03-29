@@ -6,6 +6,7 @@ import ClassCard from '../cards/ClassCard';
 import HeaderTabItem from './HeaderTabItem';
 import Button from '../forms/Button';
 import Spinner from '../Spinner';
+import TextMessageError from '../TextMessageError';
 import JoinModal from '../modals/JoinModal';
 
 export default function MyJoinedClasses() {

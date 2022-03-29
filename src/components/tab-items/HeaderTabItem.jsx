@@ -23,7 +23,6 @@ export default function HeaderTabItem({
                 {withInputSearch && (
                     <Input
                         type="text"
-                        autoFocus
                         placeholder="Search by name or description..."
                     />
                 )}
