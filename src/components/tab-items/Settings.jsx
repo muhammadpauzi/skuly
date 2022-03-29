@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import Container from '../Container';
+import { useEffect, useState } from 'react';
 import PAGE_TITLES from '../../constants/pageTitles';
 import { useParams } from 'react-router-dom';
 import HeaderTabItem from './HeaderTabItem';
@@ -9,16 +8,17 @@ import Spinner from '../Spinner';
 import Button from '../forms/Button';
 import { useAuth } from '../../contexts/useAuth';
 import { useClasses } from '../../hooks/useClasses';
+import UpdateClassModal from '../modals/UpdateClassModal';
 
 export default function Settings() {
     const { user } = useAuth();
+    const [isOpenUpdateClassModal, setIsOpenUpdateClassModal] = useState(false);
     const { isLoading, deleteClass } = useClasses();
     useEffect(() => {
         document.title = PAGE_TITLES.SETTINGS;
     }, []);
 
     const params = useParams();
-
     const { data, error } = useSWR(`/classes/${params.id}`, fetcher);
 
     // loading
@@ -74,29 +74,41 @@ export default function Settings() {
                     </h4>
                 </div>
 
-                <div className="flex items-center justify-end space-x-3">
+                <div className="flex items-center justify-end space-y-2 md:space-x-3 flex-col md:flex-row">
                     {user._id === classData.teacher && (
-                        <Button
-                            className="w-full md:w-auto"
-                            onClick={handleDeleteClass}
-                            styleClassName={
-                                isLoading
-                                    ? 'text-white bg-red-400'
-                                    : 'bg-red-500 hover:bg-red-600 text-white focus:ring-red-600'
-                            }
-                            disabled={isLoading}
-                        >
-                            {isLoading ? (
-                                <>
-                                    <Spinner className="mr-3" /> Deleting...
-                                </>
-                            ) : (
-                                'Delete this class'
-                            )}
-                        </Button>
+                        <>
+                            <Button
+                                className="w-full md:w-auto"
+                                onClick={() => setIsOpenUpdateClassModal(true)}
+                            >
+                                Update class
+                            </Button>
+                            <Button
+                                className="w-full md:w-auto"
+                                onClick={handleDeleteClass}
+                                styleClassName={
+                                    isLoading
+                                        ? 'text-white bg-red-400'
+                                        : 'bg-red-500 hover:bg-red-600 text-white focus:ring-red-600'
+                                }
+                                disabled={isLoading}
+                            >
+                                {isLoading ? (
+                                    <>
+                                        <Spinner className="mr-3" /> Deleting...
+                                    </>
+                                ) : (
+                                    'Delete this class'
+                                )}
+                            </Button>
+                        </>
                     )}
                 </div>
             </div>
+            <UpdateClassModal
+                isOpen={isOpenUpdateClassModal}
+                setIsOpen={setIsOpenUpdateClassModal}
+            />
         </>
     );
 }

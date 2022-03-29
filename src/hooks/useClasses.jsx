@@ -32,6 +32,32 @@ export function useClasses() {
             .finally(() => setIsLoading(false));
     };
 
+    const updateClass = async ({ setErrors, classId, ...props }) => {
+        setErrors([]);
+        setIsLoading(true);
+
+        axios
+            .put(`/classes/${classId}`, props)
+            .then((res) => {
+                const classData = res.data;
+                navigate(`/classes/${classData.data._id}`, { replace: true });
+                toast.success(res.data.message);
+            })
+            .catch((error) => {
+                if (![401, 422, 409].includes(error.response.status))
+                    throw error;
+                if ([401, 409].includes(error.response.status))
+                    setErrors(error.response.data.message);
+                if (error.response.status == 422)
+                    setErrors(
+                        Object.values(error.response.data.errors)
+                            .map((err) => err.message)
+                            .flat()
+                    );
+            })
+            .finally(() => setIsLoading(false));
+    };
+
     const joinClass = async ({ code, ...props }) => {
         setIsLoading(true);
 
@@ -76,5 +102,5 @@ export function useClasses() {
             .finally(() => setIsLoading(false));
     };
 
-    return { isLoading, createClass, joinClass, deleteClass };
+    return { isLoading, createClass, joinClass, deleteClass, updateClass };
 }
