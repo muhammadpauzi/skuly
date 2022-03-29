@@ -19,6 +19,7 @@ const links = [
         name: 'Classes',
         href: '/',
         Icon: PencilIcon,
+        private: true,
     },
     {
         name: 'About',
@@ -37,6 +38,7 @@ export default function Navbar() {
                         <Logo className="flex items-center">Skuly.</Logo>
                         <div className="hidden md:flex space-x-6 justify-start">
                             {links.map((link, i) => {
+                                if (link.private && !user) return;
                                 return (
                                     <AppLink key={i} to={link.href}>
                                         <div className="flex items-center">
