@@ -1,10 +1,11 @@
-import axios from "axios";
+import axios from 'axios';
 
+const API_BASE_URL = import.meta.env.API_BASE_URL;
 export default axios.create({
-  baseURL: "http://localhost:5000/api/v1",
-  headers: {
-    // "Content-Type": "application/x-www-form-urlencoded",
-    "X-Requested-With": "XMLHttpRequest",
-  },
-  withCredentials: true,
+    baseURL: API_BASE_URL + '/api/v1',
+    headers: {
+        // "Content-Type": "application/x-www-form-urlencoded",
+        'X-Requested-With': 'XMLHttpRequest',
+    },
+    withCredentials: true,
 });
