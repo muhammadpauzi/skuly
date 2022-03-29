@@ -6,7 +6,7 @@ export default function Container({ className, children, maxWidthClass }) {
         <div
             className={classNames(
                 maxWidthClass,
-                'mx-auto px-2 sm:px-5 md:px-8',
+                'mx-auto px-4 sm:px-5 md:px-8',
                 className
             )}
         >
