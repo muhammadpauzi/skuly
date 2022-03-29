@@ -16,7 +16,7 @@ export default function WorkCard({ _id, title, description, duedate }) {
                 </p>
             )}
             <span className="text-sm text-gray-700 flex items-center">
-                {duedate}
+                {duedate || 'No Due'}
             </span>
         </AppLink>
     );
