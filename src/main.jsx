@@ -4,8 +4,6 @@ import './index.css';
 import App from './App';
 import { SWRConfig } from 'swr';
 import { toast } from 'react-toastify';
-import dotenv from 'dotenv';
-dotenv.config();
 
 ReactDOM.render(
     <React.StrictMode>
