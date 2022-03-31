@@ -15,7 +15,7 @@ export function useWorks() {
             .post(`/works?classId=${classId}`, props)
             .then((res) => {
                 const work = res.data.data;
-                navigate(`/works/${work._id}`);
+                navigate(`/classes/${classId}/works/${work._id}`);
                 toast.success(res.data.message);
             })
             .catch((error) => {
