@@ -81,7 +81,9 @@ export default function Settings() {
                         <h4>
                             Class Code :{' '}
                             <span className="mt-2 block text-gray-600 font-normal">
-                                {codeData?.data?.code}
+                                {codeData
+                                    ? codeData.data.code
+                                    : 'Getting code...'}
                             </span>
                         </h4>
                     )}
