@@ -84,7 +84,11 @@ export default function WorkDetail() {
                     {workData.type[0].toUpperCase() +
                         workData.type.substring(1).toLowerCase()}
                 </span>
-                <span className="block">Due {workData.duedate.formated1}</span>
+                <span className="block">
+                    {workData.duedate.formated1
+                        ? 'Due ' + workData.duedate.formated1
+                        : 'No Due'}
+                </span>
             </div>
             <div className="space-y-2">{workData.description}</div>
         </Container>
