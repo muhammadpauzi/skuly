@@ -9,6 +9,7 @@ const PAGE_TITLES = {
     STUDENTS: 'Students - Skuly',
     SETTINGS: 'Settings - Skuly',
     CREATE_NEW_WORK: 'Create new work - Skuly',
+    WORK_DETAIL: 'Work detail - Skuly',
 };
 
 export default PAGE_TITLES;

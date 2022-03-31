@@ -33,5 +33,27 @@ export function useWorks() {
             .finally(() => setIsLoading(false));
     };
 
-    return { isLoading, createWork };
+    const deleteWork = async ({ classId, workId, ...props }) => {
+        setIsLoading(true);
+
+        axios
+            .delete(`/works/${workId}?classId=${classId}`, props)
+            .then((res) => {
+                navigate(`/classes/${classId}`);
+                toast.success(res.data.message);
+            })
+            .catch((error) => {
+                console.error(error);
+                if (![401, 404, 403].includes(error.response.status))
+                    throw error;
+                if ([401, 404, 403].includes(error.response.status))
+                    toast.error(
+                        error.response.data.message ||
+                            error.response.data.errorMessage
+                    );
+            })
+            .finally(() => setIsLoading(false));
+    };
+
+    return { isLoading, createWork, deleteWork };
 }

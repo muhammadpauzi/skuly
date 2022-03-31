@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CreateClass from './pages/CreateClass';
 import CreateWork from './pages/CreateWork';
+import WorkDetail from './pages/WorkDetail';
 
 function App() {
     return (
@@ -48,6 +49,14 @@ function App() {
                             element={
                                 <AuthenticatedRoute>
                                     <CreateWork />
+                                </AuthenticatedRoute>
+                            }
+                        />
+                        <Route
+                            path="/classes/:classId/works/:workId"
+                            element={
+                                <AuthenticatedRoute>
+                                    <WorkDetail />
                                 </AuthenticatedRoute>
                             }
                         />

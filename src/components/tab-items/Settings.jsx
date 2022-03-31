@@ -20,9 +20,11 @@ export default function Settings() {
 
     const params = useParams();
     const { data, error } = useSWR(`/classes/${params.id}`, fetcher);
-    const { data: codeData, error: codeError } =
-        user._id === data?.data?.teacher &&
-        useSWR(`/classes/${params.id}/code`, fetcher);
+    const shouldFetchClassCode = user._id === data?.data?.teacher;
+    const { data: codeData, error: codeError } = useSWR(
+        shouldFetchClassCode ? `/classes/${params.id}/code` : null,
+        fetcher
+    );
 
     // loading
     if (!data)
@@ -66,13 +68,13 @@ export default function Settings() {
                     <h4>
                         Created at :{' '}
                         <span className="mt-2 block text-gray-600 font-normal">
-                            {classData?.createdAt}
+                            {classData?.createdAt?.formated1}
                         </span>
                     </h4>
                     <h4>
                         Updated at :{' '}
                         <span className="mt-2 block text-gray-600 font-normal">
-                            {classData?.updatedAt}
+                            {classData?.updatedAt?.formated1}
                         </span>
                     </h4>
                     {user._id === classData.teacher && (
